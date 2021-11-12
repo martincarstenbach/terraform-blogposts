@@ -64,6 +64,8 @@ resource "oci_core_instance" "private_instance" {
     }
   }
 
+  defined_tags = var.compute_defined_tags
+
   create_vnic_details {
     
     assign_private_dns_record = true

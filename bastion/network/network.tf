@@ -39,6 +39,9 @@ resource "oci_core_subnet" "private_subnet" {
   prohibit_public_ip_on_vnic = true
   prohibit_internet_ingress  = true
   route_table_id             = oci_core_route_table.private_rt.id
+  security_list_ids          = [
+    oci_core_security_list.private_sl.id
+  ]
 }
 
 # --------------------------------------------------------------------- security list

@@ -59,6 +59,7 @@ resource "oci_bastion_bastion" "demo_bastionsrv" {
   client_cidr_block_allow_list = [
     var.local_laptop_id
   ]
+
   defined_tags = var.network_defined_tags
 
   name = "demobastionsrv"

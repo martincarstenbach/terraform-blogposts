@@ -63,7 +63,7 @@ variable "ssh_bastion_key" {
 
 # --------------------------------------------------------------------- network
 
-variable "network_defined_tags" {
+variable "compute_defined_tags" {
   description = "the default tags to be associated with resource"
   type        = map(string)
   default = {
