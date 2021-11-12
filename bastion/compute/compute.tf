@@ -32,6 +32,15 @@ data "oci_identity_availability_domains" "ads" {
   compartment_id = var.compartment_ocid
 }
 
+# --------------------------------------------------------------------- remote state: private subnet ID
+
+data "terraform_remote_state" "network_state" {
+  backend = "local"
+  config = {
+    path = "../network/terraform.tfstate"
+  }
+}
+
 # --------------------------------------------------------------------- private compute instance
 
 resource "oci_core_instance" "private_instance" {
@@ -60,7 +69,7 @@ resource "oci_core_instance" "private_instance" {
     assign_private_dns_record = true
     assign_public_ip = false
     hostname_label = "privateinst"
-    subnet_id = oci_core_subnet.private_subnet.id
+    subnet_id = data.terraform_remote_state.network_state.outputs.private_subnet_id
     nsg_ids = []
   }
 
