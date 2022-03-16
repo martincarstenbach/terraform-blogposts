@@ -15,5 +15,5 @@
 # --------------------------------------------------------------------- begin code section
 
 output "database_vm_ocid" {
-    value = module.database_module.database_host_ocid
+  value = module.database_module.database_host_ocid
 }

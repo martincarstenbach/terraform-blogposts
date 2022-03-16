@@ -38,14 +38,14 @@ module "networking_module" {
   vcn_cidr_block        = "10.0.0.0/16"
   vcn_display_name      = "testing VCN"
   vcn_dns_label         = "tst"
-  backend_sn_cidr_range     = "10.0.1.0/24"
+  backend_sn_cidr_range = "10.0.1.0/24"
   controlhost_ip_addr   = "1.2.3.4/32"
 
   compartment_ocid = var.compartment_ocid
-  
+
   # define tags as per global/namespaces
   network_defined_tags = {
-    "project_tag_namespace.environment_tag": "testing"
+    "project_tag_namespace.environment_tag" : "testing"
   }
 }
 

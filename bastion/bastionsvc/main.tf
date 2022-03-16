@@ -1,4 +1,4 @@
-# Copyright 2021 Martin Bach
+# Copyright 2022 Martin Bach
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -69,9 +69,9 @@ resource "oci_bastion_bastion" "demo_bastionsrv" {
 resource "oci_bastion_session" "demo_bastionsession" {
 
   bastion_id = oci_bastion_bastion.demo_bastionsrv.id
-  
+
   key_details {
-  
+
     public_key_content = var.ssh_bastion_key
   }
 

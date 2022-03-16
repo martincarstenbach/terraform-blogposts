@@ -1,4 +1,4 @@
-# Copyright 2021 Martin Bach
+# Copyright 2022 Martin Bach
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +15,6 @@
 # --------------------------------------------------------------------- begin code section
 
 output "private_instance_id" {
-  value = oci_core_instance.private_instance.id
+  value       = oci_core_instance.private_instance.id
   description = "The private instance's OCID"
 }

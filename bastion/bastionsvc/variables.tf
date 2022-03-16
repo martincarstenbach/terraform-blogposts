@@ -1,4 +1,4 @@
-# Copyright 2021 Martin Bach
+# Copyright 2022 Martin Bach
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -53,12 +53,12 @@ variable "compartment_ocid" {
 
 variable "ssh_bastion_key" {
   description = "SSH key to be used for the bastion session"
-  type = string
+  type        = string
 }
 
 variable "local_laptop_id" {
   description = "your external IP address"
-  type = string
+  type        = string
 }
 
 variable "network_defined_tags" {

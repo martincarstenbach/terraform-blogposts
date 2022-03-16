@@ -15,5 +15,5 @@
 # --------------------------------------------------------------------- begin code section
 
 output "database_subnet_ocid" {
-    value = module.networking_module.backend_subnet_ocid
+  value = module.networking_module.backend_subnet_ocid
 }

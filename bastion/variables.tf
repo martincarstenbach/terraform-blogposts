@@ -1,4 +1,4 @@
-# Copyright 2021 Martin Bach
+# Copyright 2022 Martin Bach
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -52,12 +52,12 @@ variable "compartment_ocid" {
 # --------------------------------------------------------------------- bastion
 
 variable "ssh_vm_key" {
-  type = string
+  type        = string
   description = "the (public) SSH key to be used on the VN"
 }
 
 variable "ssh_bastion_key" {
-  type = string
+  type        = string
   description = "the (public) SSH key to be used with the bastion session"
 }
 

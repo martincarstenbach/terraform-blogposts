@@ -16,7 +16,7 @@
 
 # this is the data source for Oracle Linux 7 images
 data "oci_core_images" "ol7_latest" {
-  compartment_id           = var.compartment_ocid
+  compartment_id = var.compartment_ocid
 
   operating_system         = "Oracle Linux"
   operating_system_version = "7.9"
@@ -42,10 +42,10 @@ resource "oci_core_instance" "database_instance" {
   }
 
   agent_config {
-    are_all_plugins_disabled  = false
-    is_management_disabled    = false
-    is_monitoring_disabled    = false
-    plugins_config  {
+    are_all_plugins_disabled = false
+    is_management_disabled   = false
+    is_monitoring_disabled   = false
+    plugins_config {
       desired_state = "ENABLED"
       name          = "Bastion"
     }

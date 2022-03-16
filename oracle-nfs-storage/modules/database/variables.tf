@@ -21,32 +21,32 @@
 # --------------------------------------------------------------------- global
 
 variable "subnet_ocid" {
-  type = string
+  type        = string
   description = "the backend subnet's OCID"
 }
 
 variable "compartment_ocid" {
-    type = string
-    description = "the compartment to use when creating these resources"
+  type        = string
+  description = "the compartment to use when creating these resources"
 }
 
 # --------------------------------------------------------------------- database
 
 variable "instance_shape" {
-  type = string
+  type        = string
   description = "the database server's VM's shape"
-  default = "VM.Standard.E2.1"
+  default     = "VM.Standard.E2.1"
 }
 
 variable "ssh_public_key" {
-  type = string
+  type        = string
   description = "The SSH key to be copied to the opc user's account on the database host"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "database_defined_tags" {
   description = "the default tags to be associated with resource"
-  type        = map(string)  
+  type        = map(string)
   default     = {}
 }
 

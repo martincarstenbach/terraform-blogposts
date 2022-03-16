@@ -1,4 +1,4 @@
-# Copyright 2021 Martin Bach
+# Copyright 2022 Martin Bach
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +15,6 @@
 # --------------------------------------------------------------------- begin code section
 
 output "private_subnet_id" {
-  value = oci_core_subnet.private_subnet.id
+  value       = oci_core_subnet.private_subnet.id
   description = "The private subnet's OCID"
 }

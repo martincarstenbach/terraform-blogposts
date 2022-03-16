@@ -19,6 +19,6 @@
 #
 
 output "backend_subnet_ocid" {
-  value = oci_core_subnet.backend_subnet.id
+  value       = oci_core_subnet.backend_subnet.id
   description = "backend subnet OCID"
 }

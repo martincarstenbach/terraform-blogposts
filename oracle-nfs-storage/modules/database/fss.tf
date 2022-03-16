@@ -16,7 +16,7 @@
 
 # need to be able to look up the subnet's CIDR
 data "oci_core_subnet" "backend_sn" {
-    subnet_id = var.subnet_ocid
+  subnet_id = var.subnet_ocid
 }
 
 resource "oci_file_storage_file_system" "databasefs" {
@@ -30,15 +30,15 @@ resource "oci_file_storage_mount_target" "database_mount_tgt" {
   compartment_id      = var.compartment_ocid
   defined_tags        = var.database_defined_tags
 
-  display_name        = "database mount target"
-  
-  hostname_label      = "fss"
-  subnet_id           = data.oci_core_subnet.backend_sn.id
+  display_name = "database mount target"
+
+  hostname_label = "fss"
+  subnet_id      = data.oci_core_subnet.backend_sn.id
 }
 
 resource "oci_file_storage_export_set" "database_export_set" {
-    mount_target_id = oci_file_storage_mount_target.database_mount_tgt.id
-    display_name    = "database storage export set" 
+  mount_target_id = oci_file_storage_mount_target.database_mount_tgt.id
+  display_name    = "database storage export set"
 }
 
 resource "oci_file_storage_export" "database_export" {
@@ -51,7 +51,7 @@ resource "oci_file_storage_export" "database_export" {
     source                         = data.oci_core_subnet.backend_sn.cidr_block
   }
 
-  export_set_id =  oci_file_storage_export_set.database_export_set.id
+  export_set_id  = oci_file_storage_export_set.database_export_set.id
   file_system_id = oci_file_storage_file_system.databasefs.id
   path           = "/db"
 }

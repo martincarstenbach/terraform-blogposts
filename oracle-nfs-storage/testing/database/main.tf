@@ -46,13 +46,13 @@ module "database_module" {
 
   # module variables
   ssh_public_key = var.ssh_vm_key
-  subnet_ocid = data.terraform_remote_state.network.outputs.database_subnet_ocid
+  subnet_ocid    = data.terraform_remote_state.network.outputs.database_subnet_ocid
   instance_shape = "VM.Standard.E2.4"
-  
+
   compartment_ocid = var.compartment_ocid
-  
+
   # define tags as per global/namespaces
   database_defined_tags = {
-    "project_tag_namespace.environment_tag": "testing"
+    "project_tag_namespace.environment_tag" : "testing"
   }
 }

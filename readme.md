@@ -6,8 +6,8 @@ Each sub-directory should come with its own readme (famous last words, I know) a
 
 Please note that the same disclaimer I used for the blog applies here as well. In summary I have tried my best to ensure the code works, but as indicated in the [license](LICENSE) file can't take any responsibility if stuff breaks. I didn't check whether you need any software licenses to run the code, nor does this repository pay special attention to avoid incurring cost when creating cloud resources. 
 
-> As with everything in the cloud, there is most likely cost associated. 
+> As with everything in the cloud, there is most likely cost associated. Don't run any of this unless you are sure you understand the implications, especially those around money!
 
-Please don't use this repository unless you absolutely understand each line of code and the implications of using it.
+As with all code publicly availble on the Internet, please don't use this repository unless you absolutely understand each line of code
 
 *Happy Automating!*

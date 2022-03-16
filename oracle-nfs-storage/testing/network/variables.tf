@@ -15,29 +15,29 @@
 # --------------------------------------------------------------------- begin code section
 
 variable "region" {
-    type = string
+  type = string
 }
 
 variable "private_key_path" {
-    type = string
+  type = string
 }
 
 variable "key_fingerprint" {
-    type = string
+  type = string
 }
 
 variable "private_key_password" {
-    type = string
+  type = string
 }
 
 variable "user_ocid" {
-    type = string
+  type = string
 }
 
 variable "tenancy_ocid" {
-    type = string
+  type = string
 }
 
 variable "compartment_ocid" {
-    type = string
+  type = string
 }

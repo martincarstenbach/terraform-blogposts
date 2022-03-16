@@ -22,23 +22,23 @@
 
 variable "network_defined_tags" {
   description = "the default tags to be associated with resource"
-  type        = map(string)  
+  type        = map(string)
   default     = {}
 }
 
 # --------------------------------------------------------------------- VCN
 variable "vcn_cidr_block" {
-  type = string
+  type        = string
   description = "the CIDR block to be used with the VCN"
 }
 
 variable "vcn_display_name" {
-  type = string
+  type        = string
   description = "the network's display name as it will appear in the GUI"
 }
 
 variable "vcn_dns_label" {
-  type = string
+  type        = string
   description = "the DNS label to be use"
 }
 
@@ -46,7 +46,7 @@ variable "vcn_dns_label" {
 # --------------------------------------------------------------------- subnets
 
 variable "backend_sn_cidr_range" {
-  type = string
+  type        = string
   description = "VCN range: backend subnet"
 }
 
@@ -57,6 +57,6 @@ variable "controlhost_ip_addr" {
 # --------------------------------------------------------------------- compartment
 
 variable "compartment_ocid" {
-    type = string
-    description = "the compartment to use when creating these resources"
+  type        = string
+  description = "the compartment to use when creating these resources"
 }

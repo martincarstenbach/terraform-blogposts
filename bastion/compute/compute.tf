@@ -1,4 +1,4 @@
-# Copyright 2021 Martin Bach
+# Copyright 2022 Martin Bach
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -50,46 +50,46 @@ resource "oci_core_instance" "private_instance" {
 
     plugins_config {
       desired_state = "ENABLED"
-      name = "Vulnerability Scanning"
+      name          = "Vulnerability Scanning"
     }
 
     plugins_config {
       desired_state = "ENABLED"
-      name = "Compute Instance Monitoring"
+      name          = "Compute Instance Monitoring"
     }
 
     plugins_config {
       desired_state = "ENABLED"
-      name = "Bastion"
+      name          = "Bastion"
     }
   }
 
   defined_tags = var.compute_defined_tags
 
   create_vnic_details {
-    
+
     assign_private_dns_record = true
-    assign_public_ip = false
-    hostname_label = "privateinst"
-    subnet_id = data.terraform_remote_state.network_state.outputs.private_subnet_id
-    nsg_ids = []
+    assign_public_ip          = false
+    hostname_label            = "privateinst"
+    subnet_id                 = data.terraform_remote_state.network_state.outputs.private_subnet_id
+    nsg_ids                   = []
   }
 
   availability_domain = data.oci_identity_availability_domains.ads.availability_domains.0.name
-  compartment_id = var.compartment_ocid
+  compartment_id      = var.compartment_ocid
 
   display_name = "private instance"
 
   shape = "VM.Standard.E3.Flex"
   shape_config {
     memory_in_gbs = 32
-    ocpus = 2
+    ocpus         = 2
   }
   metadata = {
     "ssh_authorized_keys" = var.ssh_vm_key
   }
   source_details {
-    source_id = data.oci_core_images.ol8_latest.images.0.id
+    source_id   = data.oci_core_images.ol8_latest.images.0.id
     source_type = "image"
   }
 }

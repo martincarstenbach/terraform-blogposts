@@ -15,6 +15,6 @@
 # --------------------------------------------------------------------- begin code section
 
 output "database_host_ocid" {
-  value = oci_core_instance.database_instance.id
+  value       = oci_core_instance.database_instance.id
   description = "database server VM OCID"
 }

@@ -1,4 +1,4 @@
-# Copyright 2021 Martin Bach
+# Copyright 2022 Martin Bach
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ resource "oci_core_subnet" "private_subnet" {
   prohibit_public_ip_on_vnic = true
   prohibit_internet_ingress  = true
   route_table_id             = oci_core_route_table.private_rt.id
-  security_list_ids          = [
+  security_list_ids = [
     oci_core_security_list.private_sl.id
   ]
 }

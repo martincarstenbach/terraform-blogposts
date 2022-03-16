@@ -19,7 +19,7 @@
 #
 
 resource "oci_core_vcn" "vcn" {
-    
+
   compartment_id = var.compartment_ocid
   cidr_block     = var.vcn_cidr_block
   defined_tags   = var.network_defined_tags
@@ -42,10 +42,10 @@ resource "oci_core_subnet" "backend_subnet" {
   dns_label                  = "backend"
   prohibit_public_ip_on_vnic = true
   prohibit_internet_ingress  = true
-  security_list_ids          = [
+  security_list_ids = [
     oci_core_security_list.backend_sl.id
   ]
-  route_table_id             = oci_core_route_table.backend_rt.id
+  route_table_id = oci_core_route_table.backend_rt.id
 }
 
 
@@ -58,15 +58,15 @@ resource "oci_core_security_list" "backend_sl" {
   compartment_id = var.compartment_ocid
   vcn_id         = oci_core_vcn.vcn.id
 
-  defined_tags   = var.network_defined_tags
-  display_name   = "backend default security list"
+  defined_tags = var.network_defined_tags
+  display_name = "backend default security list"
 
   egress_security_rules {
 
     destination = var.backend_sn_cidr_range
-    protocol = "6"
+    protocol    = "6"
 
-    description = "SSH outgoing"
+    description      = "SSH outgoing"
     destination_type = ""
 
     stateless = false
@@ -74,16 +74,16 @@ resource "oci_core_security_list" "backend_sl" {
 
       max = 22
       min = 22
-      
+
     }
   }
 
   egress_security_rules {
 
     destination = "0.0.0.0/0"
-    protocol = "6"
+    protocol    = "6"
 
-    description = "system updates (http)"
+    description      = "system updates (http)"
     destination_type = ""
 
     stateless = false
@@ -91,16 +91,16 @@ resource "oci_core_security_list" "backend_sl" {
 
       max = 80
       min = 80
-      
+
     }
   }
 
   egress_security_rules {
 
     destination = "0.0.0.0/0"
-    protocol = "6"
+    protocol    = "6"
 
-    description = "system updates (https)"
+    description      = "system updates (https)"
     destination_type = ""
 
     stateless = false
@@ -108,16 +108,16 @@ resource "oci_core_security_list" "backend_sl" {
 
       max = 443
       min = 443
-      
+
     }
   }
 
   egress_security_rules {
 
     destination = var.backend_sn_cidr_range
-    protocol = "6"
+    protocol    = "6"
 
-    description = "FSS outbound TCP port 111"
+    description      = "FSS outbound TCP port 111"
     destination_type = ""
 
     stateless = false
@@ -125,16 +125,16 @@ resource "oci_core_security_list" "backend_sl" {
 
       max = 111
       min = 111
-      
+
     }
   }
 
   egress_security_rules {
 
     destination = var.backend_sn_cidr_range
-    protocol = "6"
+    protocol    = "6"
 
-    description = "FSS outbound TCP ports 2048-2050"
+    description      = "FSS outbound TCP ports 2048-2050"
     destination_type = ""
 
     stateless = false
@@ -142,16 +142,16 @@ resource "oci_core_security_list" "backend_sl" {
 
       max = 2050
       min = 2048
-      
+
     }
   }
 
   egress_security_rules {
 
     destination = var.backend_sn_cidr_range
-    protocol = "17"
+    protocol    = "17"
 
-    description = "FSS outbound UDP port 111"
+    description      = "FSS outbound UDP port 111"
     destination_type = ""
 
     stateless = false
@@ -159,48 +159,48 @@ resource "oci_core_security_list" "backend_sl" {
 
       max = 111
       min = 111
-      
+
     }
   }
 
   ingress_security_rules {
 
     protocol = "6"
-    source = var.backend_sn_cidr_range
+    source   = var.backend_sn_cidr_range
 
     description = "SSH inbound"
-    
+
     source_type = "CIDR_BLOCK"
     tcp_options {
 
       max = 22
       min = 22
-      
+
     }
-    
+
   }
 
   ingress_security_rules {
 
     protocol = "6"
-    source = var.backend_sn_cidr_range
+    source   = var.backend_sn_cidr_range
 
     description = "FSS inbound TCP port 111"
-    
+
     source_type = "CIDR_BLOCK"
     tcp_options {
       max = 111
-      min = 111      
+      min = 111
     }
   }
 
   ingress_security_rules {
 
     protocol = "6"
-    source = var.backend_sn_cidr_range
+    source   = var.backend_sn_cidr_range
 
     description = "FSS inbound TCP port 2048+"
-    
+
     source_type = "CIDR_BLOCK"
     tcp_options {
       max = 2050
@@ -211,28 +211,28 @@ resource "oci_core_security_list" "backend_sl" {
   ingress_security_rules {
 
     protocol = "17"
-    source = var.backend_sn_cidr_range
+    source   = var.backend_sn_cidr_range
 
     description = "FSS inbound UDP port 111"
-    
+
     source_type = "CIDR_BLOCK"
     udp_options {
       max = 111
-      min = 111     
+      min = 111
     }
   }
 
   ingress_security_rules {
 
     protocol = "17"
-    source = var.backend_sn_cidr_range
+    source   = var.backend_sn_cidr_range
 
     description = "FSS inbound UDP port 2048"
-    
+
     source_type = "CIDR_BLOCK"
     udp_options {
       max = 2048
-      min = 2048    
+      min = 2048
     }
   }
 
@@ -268,8 +268,8 @@ resource "oci_core_route_table" "backend_rt" {
     destination_type  = "SERVICE_CIDR_BLOCK"
     network_entity_id = oci_core_service_gateway.sgw.id
   }
-  
-  
+
+
 }
 
 #
@@ -290,7 +290,7 @@ resource "oci_core_service_gateway" "sgw" {
   }
 
   vcn_id = oci_core_vcn.vcn.id
-  
+
   defined_tags = var.network_defined_tags
   display_name = "SGW for Bastion Service"
 }
