@@ -1,4 +1,4 @@
-# Copyright 2022 Martin Bach
+# Copyright 2023 Martin Bach
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,12 +14,13 @@
 
 # --------------------------------------------------------------------- begin code section
 
-# this is the data source for Oracle Linux 7 images
+# this is the data source for Oracle Linux 8 images
 data "oci_core_images" "ol8_latest" {
-  compartment_id = var.compartment_ocid
+  compartment_id           = var.compartment_ocid
 
-  operating_system = "Oracle Linux"
-  shape            = "VM.Standard.E2.1.Micro"
+  operating_system         = "Oracle Linux"
+  operating_system_version = "8"
+  shape                    = "VM.Standard.E2.1.Micro"
 }
 
 # now let's print the OCID

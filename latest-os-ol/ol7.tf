@@ -1,4 +1,4 @@
-# Copyright 2022 Martin Bach
+# Copyright 2023 Martin Bach
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 # this is the data source for Oracle Linux 7 images
 data "oci_core_images" "ol7_latest" {
-  compartment_id = var.compartment_ocid
+  compartment_id           = var.compartment_ocid
 
   operating_system         = "Oracle Linux"
   operating_system_version = "7.9"

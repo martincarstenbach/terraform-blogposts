@@ -14,11 +14,16 @@
 
 # --------------------------------------------------------------------- begin code section
 
-provider "oci" {
-  tenancy_ocid         = var.tenancy_ocid
-  user_ocid            = var.user_ocid
-  fingerprint          = var.key_fingerprint
-  private_key_path     = var.private_key_path
-  private_key_password = var.private_key_password
-  region               = var.oci_region
+# this is the data source for Oracle Linux 9 images
+data "oci_core_images" "ol9_latest" {
+  compartment_id           = var.compartment_ocid
+
+  operating_system         = "Oracle Linux"
+  operating_system_version = "9"
+  shape                    = "VM.Standard.E2.1.Micro"
+}
+
+# now let's print the OCID
+output "latest_ol9_image" {
+  value = data.oci_core_images.ol9_latest.images.0.id
 }
